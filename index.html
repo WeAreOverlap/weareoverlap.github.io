@@ -1,229 +1,34 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>We are Overlap.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<!DOCTYPE html><html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="generator" content="Astro v4.6.3"><title>We are Overlap.</title><meta name="description" content="We are Overlap. We build experience-first digital solutions."><!-- social media --><meta property="og:title" content="Overlap"><meta property="og:type" content="website"><meta property="og:description" content="We are Overlap. We build experience-first digital solutions."><meta property="og:image" content="https://weareoverlap.io/social.jpg"><meta property="og:url" content="https://weareoverlap.io/"><meta name="twitter:card" content="summary_large_image"><!-- Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-HFWYJ4C4JQ">
+  // _
+</script> <script>(function(){const id = "G-HFWYJ4C4JQ";
 
-    <!-- Favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/public/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/public/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/public/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/public/site.webmanifest" />
-    <link
-      rel="mask-icon"
-      href="/public/safari-pinned-tab.svg"
-      color="#000000"
-    />
-    <meta name="msapplication-TileColor" content="#000000" />
-    <meta name="theme-color" content="#ffffff" />
-
-    <!-- SEO meta tags -->
-    <meta
-      name="description"
-      content="Overlap is a software hub that specializes in building cutting-edge digital solutions and exceptional user experiences."
-    />
-    <meta
-      name="keywords"
-      content="overlap, software development, product design, user experience, digital solutions"
-    />
-    <meta name="author" content="Overlap" />
-
-    <!-- OpenGraph meta tags -->
-    <meta property="og:title" content="Overlap" />
-    <meta
-      property="og:description"
-      content="Overlap is a software hub that specializes in building cutting-edge digital solutions and exceptional user experiences."
-    />
-    <meta
-      property="og:image"
-      content="https://weareoverlap.io/public/overlap-bg-logo.png"
-    />
-    <meta property="og:url" content="https://weareoverlap.io" />
-    <meta property="og:type" content="website" />
-
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-HFWYJ4C4JQ"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-HFWYJ4C4JQ");
-    </script>
-  </head>
-
-  <body
-    class="bg-black flex flex-col h-full min-h-[200px] text-center select-none bg-left-top bg-cover bg-center items-center"
-  >
-    <div class="flex-grow flex items-center justify-center -mb-4 z-50">
-      <a
-        href="mailto:hello@weareoverlap.io"
-        class="text-slate-300 hover:text-slate-200"
-      >
-        <img
-          src="public/overlap-logo--white.svg"
-          alt="Overlap logo"
-          class="w-64 m-4"
-        />
-      </a>
-    </div>
-    <div class="bottom-0 left-0 right-0 flex justify-center pb-4 z-50">
-      <div class="text-white text-2xl flex space-x-4">
-        <a
-          href="mailto:hello@weareoverlap.io"
-          class="text-slate-300 hover:text-slate-200"
-        >
-          <svg
-            class="h-8 w-8 text-slate-300 hover:text-slate-200"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-            />
-            <polyline points="22,6 12,13 2,6" />
-          </svg>
-        </a>
-        <a
-          href="https://www.linkedin.com/company/weareoverlap"
-          class="text-slate-300 hover:text-slate-200"
-        >
-          <svg
-            class="h-8 w-8 text-slate-300 hover:text-slate-200"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-            />
-            <rect x="2" y="9" width="4" height="12" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        </a>
-      </div>
-    </div>
-
-    <div id="starfield" class="absolute inset-0">
-      <canvas id="starfield-canvas"></canvas>
-    </div>
-  </body>
-
-  <script>
-    const COUNT = 800;
-    const SPEED = 0.1;
-
-    class Star {
-      constructor(x = 0, y = 0, z = 0) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.xPrev = x;
-        this.yPrev = y;
-      }
-
-      update(width, height, speed) {
-        this.xPrev = this.x;
-        this.yPrev = this.y;
-        this.z += speed * 0.0675;
-        this.x += this.x * (speed * 0.0225) * this.z;
-        this.y += this.y * (speed * 0.0225) * this.z;
-        if (
-          this.x > width / 2 ||
-          this.x < -width / 2 ||
-          this.y > height / 2 ||
-          this.y < -height / 2
-        ) {
-          this.x = Math.random() * width - width / 2;
-          this.y = Math.random() * height - height / 2;
-          this.xPrev = this.x;
-          this.yPrev = this.y;
-          this.z = 0;
-        }
-      }
-
-      draw(ctx) {
-        ctx.lineWidth = this.z;
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.xPrev, this.yPrev);
-        ctx.stroke();
-      }
+  (() => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
     }
-
-    const stars = Array.from({ length: COUNT }, () => new Star(0, 0, 0));
-    let rafId = 0;
-
-    const canvas = document.querySelector("#starfield-canvas");
-
-    const ctx = canvas.getContext("2d");
-
-    const container = document.querySelector("#starfield");
-
-    const resizeObserver = new ResizeObserver(setup);
-    resizeObserver.observe(container);
-
-    function setup() {
-      rafId > 0 && cancelAnimationFrame(rafId);
-
-      const { clientWidth: width, clientHeight: height } = container;
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.scale(dpr, dpr);
-
-      for (const star of stars) {
-        star.x = Math.random() * width - width / 2;
-        star.y = Math.random() * height - height / 2;
-        star.z = 0;
-      }
-
-      ctx.translate(width / 2, height / 2);
-      ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
-      ctx.strokeStyle = "white";
-      rafId = requestAnimationFrame(frame);
+    gtag('js', new Date());
+    gtag('config', id);
+  })();
+})();</script><!-- initialize theme --><link rel="stylesheet" href="/_astro/index.Dvej66sV.css"><script type="module" src="/_astro/hoisted.BlDrnXTN.js"></script></head> <body class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"> <header id="page-header" class="fixed top-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white" data-theme="dark" data-astro-cid-hpnw4vwy> <button id="open-nav-button" type="button" class="btn sm:hidden" aria-label="Navigation" data-astro-cid-hpnw4vwy> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-8" data-astro-cid-hpnw4vwy data-icon="mdi:menu">  <symbol id="ai:mdi:menu"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></symbol><use xlink:href="#ai:mdi:menu"></use>  </svg> </button> <a class="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center gap-3 hover:!text-default sm:relative sm:left-auto sm:transform-none" href="#" data-astro-cid-hpnw4vwy> <h1 class="sr-only" data-astro-cid-hpnw4vwy>Overlap</h1> <svg width="3.28em" height="1em" viewBox="0 0 1779 544" class="h-10 w-32" data-astro-cid-hpnw4vwy data-icon="wordmark">  <symbol id="ai:local:wordmark"><g fill="currentColor"><path d="M1589.7 460V215.2h45.22v28.56c9.52-19.38 25.5-32.3 56.44-32.3 48.62 0 87.38 41.82 87.38 92.82 0 51-38.76 92.14-87.38 92.14-30.26 0-46.24-12.24-55.76-30.6V460h-45.9Zm44.54-155.72c0 27.54 19.38 50.66 49.64 50.66 29.24 0 48.96-24.14 48.96-51 0-27.54-19.72-51-48.96-51-30.26 0-49.64 23.8-49.64 51.34Zm-163.27 92.14c-48.62 0-87.38-41.14-87.38-92.14s38.76-92.82 87.38-92.82c30.6 0 46.58 12.58 56.1 31.62V215.2h45.56V392h-44.54v-28.9c-9.52 20.06-25.5 33.32-57.12 33.32Zm-41.48-92.48c0 26.86 19.72 51 48.96 51 30.26 0 49.64-23.12 49.64-50.66 0-27.54-19.38-51.34-49.64-51.34-29.24 0-48.96 23.46-48.96 51ZM1327.54 392V143.8h45.9V392h-45.9Zm-104.35 0V215.2h44.54v33.66c6.12-25.5 24.14-39.44 54.74-37.74v43.18h-6.46c-26.52 0-46.92 17.68-46.92 47.26V392h-45.9Zm-99.71 4.42c-54.74 0-91.46-41.48-91.46-92.48 0-51 38.42-93.16 91.46-93.16 53.04 0 89.76 42.16 89.76 93.16 0 5.1-.34 10.54-1.36 16.32h-132.26c5.1 20.74 20.74 35.36 43.86 35.36 19.72 0 35.02-10.2 43.18-23.8l35.7 26.86c-14.28 22.1-43.86 37.74-78.88 37.74Zm-43.86-110.5H1167c-5.1-19.72-21.76-35.7-44.2-35.7-21.76 0-38.08 14.62-43.18 35.7ZM932.109 392l-73.78-176.8h54.4l35.36 100.98c3.06 8.5 5.78 19.04 7.48 28.22 1.7-9.18 4.42-19.72 7.48-28.22l35.36-100.98h53.381L978.349 392h-46.24ZM741.6 396.42c-70.72 0-124.1-55.08-124.1-123.08 0-68.34 53.38-123.76 124.1-123.76 70.38 0 123.42 55.42 123.42 123.76 0 68-53.04 123.08-123.42 123.08Zm-74.8-123.08c0 43.18 28.56 78.88 74.8 78.88 45.9 0 74.12-35.7 74.12-78.88 0-43.18-28.22-79.56-74.12-79.56-46.24 0-74.8 36.38-74.8 79.56Z"/><path fill-rule="evenodd" d="M222 0C99.393 0 0 99.393 0 222v100c0 122.607 99.393 222 222 222h100c122.607 0 222-99.393 222-222V222C544 99.393 444.607 0 322 0H222Zm22 222c0-24.033 10.858-45.54 27.999-59.87C289.128 176.45 300 197.956 300 222v100c0 24.034-10.858 45.541-27.999 59.871C254.872 367.551 244 346.044 244 322V222ZM222 34C118.171 34 34 118.171 34 222v100c0 103.83 84.171 188 188 188h1.927C156.214 474.604 110 403.699 110 322V222c0-61.856 50.144-112 112-112s112 50.144 112 112v100c0 33.512-14.722 63.575-38.021 84.09A87.996 87.996 0 0 0 322 410c48.601 0 88-39.399 88-88V222c0-103.829-84.17-188-188-188Zm212 188c0-81.699-46.214-152.604-113.926-188H322c103.83 0 188 84.171 188 188v100c0 103.83-84.17 188-188 188-103.829 0-188-84.17-188-188V222c0-48.601 39.399-88 88-88a87.974 87.974 0 0 1 26.021 3.911C224.722 158.425 210 188.489 210 222v100c0 61.044 51.02 112 112 112 61.856 0 112-50.144 112-112V222Z" clip-rule="evenodd"/></g></symbol><use xlink:href="#ai:local:wordmark"></use>  </svg> </a> <div data-astro-cid-hpnw4vwy> <div class="flex items-center gap-6" data-astro-cid-hpnw4vwy> <nav class="hidden sm:block" data-astro-cid-hpnw4vwy> <ul class="flex items-center gap-6" data-astro-cid-hpnw4vwy> <li data-astro-cid-hpnw4vwy> <a class="text-sm" href="#services" data-astro-cid-hpnw4vwy> Services </a> </li><li data-astro-cid-hpnw4vwy> <a class="text-sm" href="#expertise" data-astro-cid-hpnw4vwy> Expertise </a> </li> </ul> </nav> <a class="rounded-full bg-gradient-to-br from-green-300 to-cyan-300 px-6 py-2 text-center font-semibold text-black text-sm hover:text-black hidden sm:block" aria-label="Let's Talk" href="mailto:hello@weareoverlap.io?subject=Let's talk!" target="_blank"> Let&#39;s Talk </a> <!--
+  negative margin is sum of button width (6) and gap size of flex parent (6)
+  TODO don't hardcode these values
+--><button id="theme-switcher" type="button" class="-ml-12 origin-[right_center] scale-0 transition-all duration-500" data-astro-cid-l4aeqea3> <div id="icon-theme-light" data-astro-cid-l4aeqea3> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-6" data-astro-cid-l4aeqea3 data-icon="mdi:white-balance-sunny">  <symbol id="ai:mdi:white-balance-sunny"><path fill="currentColor" d="m3.55 19.09l1.41 1.41l1.8-1.79l-1.42-1.42M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6c0-3.32-2.69-6-6-6m8 7h3v-2h-3m-2.76 7.71l1.8 1.79l1.41-1.41l-1.79-1.8M20.45 5l-1.41-1.4l-1.8 1.79l1.42 1.42M13 1h-2v3h2M6.76 5.39L4.96 3.6L3.55 5l1.79 1.81zM1 13h3v-2H1m12 9h-2v3h2"/></symbol><use xlink:href="#ai:mdi:white-balance-sunny"></use>  </svg> <span class="sr-only" data-astro-cid-l4aeqea3>Use light theme</span> </div> <div id="icon-theme-dark" class="hidden" data-astro-cid-l4aeqea3> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-6" data-astro-cid-l4aeqea3 data-icon="mdi:weather-night">  <symbol id="ai:mdi:weather-night"><path fill="currentColor" d="m17.75 4.09l-2.53 1.94l.91 3.06l-2.63-1.81l-2.63 1.81l.91-3.06l-2.53-1.94L12.44 4l1.06-3l1.06 3zm3.5 6.91l-1.64 1.25l.59 1.98l-1.7-1.17l-1.7 1.17l.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85c-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14c.4-.4.82-.76 1.27-1.08c.75-.53 1.93.36 1.85 1.19c-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82c-2.81 3.14-2.7 7.96.31 10.98c3.02 3.01 7.84 3.12 10.98.31"/></symbol><use xlink:href="#ai:mdi:weather-night"></use>  </svg> <span class="sr-only" data-astro-cid-l4aeqea3>Use dark theme</span> </div> </button>   </div> <div id="menu-modal" class="modal hidden" aria-hidden="true" data-astro-cid-hpnw4vwy> <div class="fixed inset-0 bg-default px-8 py-4 text-default" data-astro-cid-hpnw4vwy> <div class="flex flex-col space-y-8" role="dialog" aria-modal="true" data-astro-cid-hpnw4vwy> <header class="text-left" data-astro-cid-hpnw4vwy> <button id="close-nav-button" type="button" class="btn" aria-label="Close navigation" data-astro-cid-hpnw4vwy> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-8" data-astro-cid-hpnw4vwy data-icon="mdi:close">  <symbol id="ai:mdi:close"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"/></symbol><use xlink:href="#ai:mdi:close"></use>  </svg> </button> </header> <div class="flex justify-center" data-astro-cid-hpnw4vwy> <svg width="1em" height="1em" viewBox="0 0 544 544" class="size-16" data-astro-cid-hpnw4vwy data-icon="logomark">  <symbol id="ai:local:logomark"><path fill="currentColor" fill-rule="evenodd" d="M222 0C99.393 0 0 99.393 0 222v100c0 122.607 99.393 222 222 222h100c122.607 0 222-99.393 222-222V222C544 99.393 444.607 0 322 0H222Zm22 222c0-24.033 10.858-45.54 27.999-59.87C289.128 176.45 300 197.956 300 222v100c0 24.034-10.858 45.541-27.999 59.871C254.872 367.551 244 346.044 244 322V222ZM222 34C118.171 34 34 118.171 34 222v100c0 103.83 84.171 188 188 188h1.927C156.214 474.604 110 403.699 110 322V222c0-61.856 50.144-112 112-112s112 50.144 112 112v100c0 33.512-14.722 63.575-38.021 84.09A87.996 87.996 0 0 0 322 410c48.601 0 88-39.399 88-88V222c0-103.829-84.17-188-188-188Zm212 188c0-81.699-46.214-152.604-113.926-188H322c103.83 0 188 84.171 188 188v100c0 103.83-84.17 188-188 188-103.829 0-188-84.17-188-188V222c0-48.601 39.399-88 88-88a87.974 87.974 0 0 1 26.021 3.911C224.722 158.425 210 188.489 210 222v100c0 61.044 51.02 112 112 112 61.856 0 112-50.144 112-112V222Z" clip-rule="evenodd"/></symbol><use xlink:href="#ai:local:logomark"></use>  </svg> </div> <nav data-astro-cid-hpnw4vwy> <ul class="flex flex-col" data-astro-cid-hpnw4vwy> <li data-astro-cid-hpnw4vwy> <a class="block py-4 text-center text-xl" href="#services" data-astro-cid-hpnw4vwy> Services </a> </li><li data-astro-cid-hpnw4vwy> <a class="block py-4 text-center text-xl" href="#expertise" data-astro-cid-hpnw4vwy> Expertise </a> </li> </ul> </nav> <a class="rounded-full bg-gradient-to-br from-green-300 to-cyan-300 px-6 py-2 text-center font-semibold text-black text-sm hover:text-black m-auto mt-20" aria-label="Let's Talk" href="mailto:hello@weareoverlap.io?subject=Let's talk!" target="_blank"> Let&#39;s Talk </a> </div> </div> </div> </div> </header>  <noscript> <style>
+    #open-nav-button {
+      display: none;
     }
-
-    function frame() {
-      const { clientWidth: width, clientHeight: height } = container;
-
-      for (const star of stars) {
-        star.update(width, height, SPEED);
-        star.draw(ctx);
-      }
-
-      ctx.fillRect(-width / 2, -height / 2, width, height);
-      rafId = requestAnimationFrame(frame);
+  </style> </noscript>  <section class="relative h-full bg-black" data-astro-cid-3egmgwtg> <div id="starfield" class="absolute inset-0"> <canvas id="starfield-canvas"></canvas> </div>  <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40" data-astro-cid-3egmgwtg> <img src="/_astro/overlap-bg-sand.C4eWEP8J_ZiDsh6.webp" srcset="/_astro/overlap-bg-sand.C4eWEP8J_Z14yXpy.webp 450w, /_astro/overlap-bg-sand.C4eWEP8J_Z27HCmw.webp 800w, /_astro/overlap-bg-sand.C4eWEP8J_Z1XCUeF.webp 1200w" class="h-full w-full object-cover" sizes="100vw" alt="The arid surface of dark sand" width="1440" height="900" loading="lazy" decoding="async"> </div> <div class="relative grid h-full place-items-center" data-astro-cid-3egmgwtg> <div id="splash-headline" class="flex flex-col items-center" data-astro-cid-3egmgwtg> <h2 class="px-10 text-center font-bold tracking-tight text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl" data-astro-cid-3egmgwtg>
+We are <span class="gradient-heading overflow-visibl pr-1" data-astro-cid-3egmgwtg>Overlap</span>.
+<br data-astro-cid-3egmgwtg>We build experience-first<br data-astro-cid-3egmgwtg> digital solutions.
+</h2> <a class="rounded-full bg-gradient-to-br from-green-300 to-cyan-300 px-6 py-2 text-center font-semibold text-black text-sm hover:text-black block sm:hidden mt-20 inline" aria-label="Let's Talk" href="mailto:hello@weareoverlap.io?subject=Let's talk!" target="_blank"> Let&#39;s Talk </a> </div> <div class="align-center absolute bottom-10" data-astro-cid-ezc34xx7> <div class="radius-full relative flex h-10 w-6 justify-center rounded-full border-2" data-astro-cid-ezc34xx7> <div id="wheel" class="mt-1 h-2 w-1 rounded-full bg-white" data-astro-cid-ezc34xx7></div> </div> </div>  </div> </section> <noscript> <style>
+    #splash-bg-fallback {
+      display: block;
     }
-  </script>
-</html>
+  </style> </noscript>  <div class="space-y-24 px-8 py-32"> <section id="services" class="flex scroll-mt-24 flex-col items-center gap-4 space-y-8"> <div class="flex flex-col items-center gap-4"> Services <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl"> What We Do </h2> </div> <p class="max-w-4xl text-center text-2xl"> 
+At Overlap, we empower <span class="text-primary">startups</span> and businesses
+    with cutting-edge tech solutions, specializing in <span class="text-primary">exceptional user experiences</span> and scalable applications.
+ </p>    <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3"> <li class="flex flex-col gap-4 border border-default bg-offset p-6"> <div class="size-8"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-full" data-icon="mdi:emoji-happy-outline">  <symbol id="ai:mdi:emoji-happy-outline"><path fill="currentColor" d="M20 12a8 8 0 0 0-8-8a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5S7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5S14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></symbol><use xlink:href="#ai:mdi:emoji-happy-outline"></use>  </svg> </div> <p class="text-md">Design &amp; User Experience</p> <p class="text-offset text-sm">Crafting seamless interactions and captivating visuals for exceptional user journeys.</p> </li><li class="flex flex-col gap-4 border border-default bg-offset p-6"> <div class="size-8"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-full" data-icon="mdi:strategy">  <symbol id="ai:mdi:strategy"><path fill="currentColor" d="m6.91 5.5l2.3 2.29l-1.42 1.42l-2.29-2.3l-2.29 2.3l-1.42-1.42l2.3-2.29l-2.3-2.29l1.42-1.42l2.29 2.3l2.29-2.3l1.42 1.42m13 13l-1.42-1.42l-2.29 2.3l-2.29-2.3l-1.42 1.42l2.3 2.29l-2.3 2.29l1.42 1.42l2.29-2.3l2.29 2.3l1.42-1.42l-2.3-2.29m.49-11.67L17.18 11L15.6 9.73l1.17-1.5a9.08 9.08 0 0 0-6.66 5.62A4.5 4.5 0 1 1 7.5 13a4 4 0 0 1 .78.08a11.27 11.27 0 0 1 8.15-6.82L15 5.18l1.27-1.58M10 17.5A2.5 2.5 0 1 0 7.5 20a2.5 2.5 0 0 0 2.5-2.5"/></symbol><use xlink:href="#ai:mdi:strategy"></use>  </svg> </div> <p class="text-md">Product Strategy</p> <p class="text-offset text-sm">Guiding product visions with strategic insights for meaningful impact and growth.</p> </li><li class="flex flex-col gap-4 border border-default bg-offset p-6"> <div class="size-8"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-full" data-icon="mdi:monitor-cellphone">  <symbol id="ai:mdi:monitor-cellphone"><path fill="currentColor" d="M23 11h-5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1m0 9h-5v-7h5zM20 2H2C.89 2 0 2.89 0 4v12a2 2 0 0 0 2 2h7v2H7v2h8v-2h-2v-2h2v-2H2V4h18v5h2V4a2 2 0 0 0-2-2"/></symbol><use xlink:href="#ai:mdi:monitor-cellphone"></use>  </svg> </div> <p class="text-md">Web &amp; Mobile Development</p> <p class="text-offset text-sm">Transforming ideas into responsive, user-centric digital experiences across platforms.</p> </li><li class="flex flex-col gap-4 border border-default bg-offset p-6"> <div class="size-8"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-full" data-icon="mdi:cloud-check-variant-outline">  <symbol id="ai:mdi:cloud-check-variant-outline"><path fill="currentColor" d="M10.35 17L16 11.35L14.55 9.9l-4.22 4.23l-2.1-2.1l-1.43 1.42M6.5 20q-2.28 0-3.89-1.57Q1 16.85 1 14.58q0-1.95 1.17-3.48q1.18-1.53 3.08-1.95q.63-2.3 2.5-3.72Q9.63 4 12 4q2.93 0 4.96 2.04Q19 8.07 19 11q1.73.2 2.86 1.5q1.14 1.28 1.14 3q0 1.88-1.31 3.19T18.5 20m-12-2h12q1.05 0 1.77-.73q.73-.72.73-1.77t-.73-1.77Q19.55 13 18.5 13H17v-2q0-2.07-1.46-3.54Q14.08 6 12 6Q9.93 6 8.46 7.46Q7 8.93 7 11h-.5q-1.45 0-2.47 1.03Q3 13.05 3 14.5T4.03 17q1.02 1 2.47 1m5.5-6"/></symbol><use xlink:href="#ai:mdi:cloud-check-variant-outline"></use>  </svg> </div> <p class="text-md">Cloud &amp; DevOps</p> <p class="text-offset text-sm">Empowering efficiency and scalability through seamless cloud architecture and DevOps practices.</p> </li><li class="flex flex-col gap-4 border border-default bg-offset p-6"> <div class="size-8"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-full" data-icon="mdi:creation">  <symbol id="ai:mdi:creation"><path fill="currentColor" d="m19 1l-1.26 2.75L15 5l2.74 1.26L19 9l1.25-2.74L23 5l-2.75-1.25M9 4L6.5 9.5L1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5M19 15l-1.26 2.74L15 19l2.74 1.25L19 23l1.25-2.75L23 19l-2.75-1.26"/></symbol><use xlink:href="#ai:mdi:creation"></use>  </svg> </div> <p class="text-md">Artificial Intelligence</p> <p class="text-offset text-sm">Pioneering AI solutions to elevate performance and drive innovation.</p> </li><li class="flex flex-col gap-4 border border-default bg-offset p-6"> <div class="size-8"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="size-full" data-icon="mdi:shield-star-outline">  <symbol id="ai:mdi:shield-star-outline"><path fill="currentColor" d="M21 11c0 5.55-3.84 10.74-9 12c-5.16-1.26-9-6.45-9-12V5l9-4l9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m3.05-5l-3.08-1.85L8.9 16l.81-3.5L7 10.16l3.58-.31l1.39-3.3l1.4 3.29l3.58.31l-2.72 2.35z"/></symbol><use xlink:href="#ai:mdi:shield-star-outline"></use>  </svg> </div> <p class="text-md">Quality Assurance</p> <p class="text-offset text-sm">Elevating product excellence through meticulous quality assurance practices.</p> </li> </ul>  </section> <section id="expertise" class="flex scroll-mt-24 flex-col items-center gap-4 space-y-8"> <div class="flex flex-col items-center gap-4"> Tech Stack <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl"> Expertise </h2> </div> <p class="max-w-4xl text-center text-2xl"> 
+Our <span class="text-primary">solutions</span> are cutting-edge, scalable, and
+    aligned with <span class="text-primary">industry standards</span>, enabling
+    us to deliver <span class="text-primary">innovative</span> and <span class="text-primary">high-performing</span> products for our clients.
+ </p>    <div class="w-full max-w-6xl space-y-2"> <div class="relative border border-default bg-offset px-6 pb-4 pt-8"> <span class="absolute right-4 top-0 -translate-y-1/2 rounded-full border border-current bg-default px-4 py-1 font-semibold uppercase tracking-tight text-xs"> Tech Stack </span> <ul class="grid grid-cols-2 gap-8 sm:grid-cols-4 md:grid-cols-8"> <li> <div class="flex flex-col items-center gap-2"> <svg width="1.12em" height="1em" viewBox="0 0 48 43" class="h-10 w-16" data-icon="frameworks/react-icon">  <symbol id="ai:local:frameworks/react-icon"><g fill="currentColor"><path d="M28.278 21.506a4.278 4.278 0 1 1-8.556 0 4.278 4.278 0 0 1 8.556 0Z"/><path fill-rule="evenodd" d="M24 5.406a31.63 31.63 0 0 0-2.09-1.867c-1.784-1.45-3.556-2.516-5.21-3.05-1.655-.536-3.307-.572-4.7.232-1.393.804-2.188 2.253-2.551 3.954-.364 1.7-.327 3.768.037 6.037.14.878.332 1.796.571 2.744-.94.266-1.83.56-2.662.877-2.147.82-3.956 1.821-5.247 2.986C.858 18.484 0 19.897 0 21.506c0 1.608.858 3.02 2.148 4.186 1.291 1.165 3.1 2.167 5.247 2.986.831.318 1.721.611 2.662.877a31.62 31.62 0 0 0-.571 2.745c-.364 2.269-.401 4.336-.037 6.037.363 1.7 1.158 3.15 2.551 3.954 1.393.804 3.045.767 4.7.232 1.654-.535 3.426-1.601 5.21-3.05A31.62 31.62 0 0 0 24 37.605c.701.682 1.4 1.306 2.09 1.867 1.784 1.45 3.556 2.516 5.21 3.05 1.655.536 3.307.572 4.7-.232 1.393-.804 2.188-2.253 2.551-3.953.364-1.701.327-3.769-.037-6.038a31.633 31.633 0 0 0-.571-2.744c.94-.266 1.83-.56 2.662-.877 2.147-.82 3.956-1.82 5.247-2.986C47.142 24.527 48 23.114 48 21.506c0-1.609-.858-3.022-2.148-4.187-1.291-1.165-3.1-2.166-5.247-2.986a31.631 31.631 0 0 0-2.662-.877c.24-.948.43-1.865.571-2.744.364-2.269.401-4.337.037-6.037-.363-1.7-1.158-3.15-2.551-3.954-1.393-.804-3.045-.768-4.7-.232-1.654.535-3.426 1.6-5.21 3.05A31.573 31.573 0 0 0 24 5.406Zm-7.943-2.932c-1.323-.428-2.31-.352-3.013.054-.704.406-1.264 1.223-1.555 2.583-.29 1.36-.283 3.149.057 5.27.131.816.31 1.672.534 2.562a49.979 49.979 0 0 1 6.402-.996 49.987 49.987 0 0 1 4.062-5.046 29.557 29.557 0 0 0-1.95-1.743c-1.669-1.355-3.213-2.256-4.537-2.684ZM24 8.4a46.165 46.165 0 0 0-2.795 3.36 61.448 61.448 0 0 1 5.59 0A46.192 46.192 0 0 0 24 8.4Zm-7.042 5.811c-1.517.19-2.959.44-4.307.741a46.17 46.17 0 0 0 1.512 4.1 61.367 61.367 0 0 1 2.795-4.841Zm-1.688 7.294a58.55 58.55 0 0 1 2.043-3.86 58.524 58.524 0 0 1 2.322-3.701 58.557 58.557 0 0 1 4.365-.16c1.496 0 2.956.055 4.365.161a58.54 58.54 0 0 1 2.322 3.7 58.536 58.536 0 0 1 2.043 3.86 58.513 58.513 0 0 1-2.043 3.862 58.534 58.534 0 0 1-2.322 3.7 58.57 58.57 0 0 1-4.365.16 58.83 58.83 0 0 1-4.365-.16 58.518 58.518 0 0 1-2.322-3.7 58.526 58.526 0 0 1-2.043-3.861Zm-2.307 0a49.982 49.982 0 0 1-2.339-6.042c-.883.25-1.713.524-2.485.819-2.007.766-3.56 1.653-4.592 2.585-1.033.933-1.46 1.826-1.46 2.638 0 .812.427 1.705 1.46 2.637 1.032.932 2.585 1.82 4.592 2.586.772.294 1.602.568 2.485.818a49.987 49.987 0 0 1 2.34-6.041Zm-.312 6.552a46.157 46.157 0 0 1 1.512-4.1 61.367 61.367 0 0 0 2.795 4.841 46.178 46.178 0 0 1-4.307-.74Zm-.57 2.01c-.226.89-.404 1.747-.535 2.562-.34 2.122-.348 3.91-.057 5.27.291 1.36.851 2.177 1.554 2.583.704.406 1.69.483 3.014.055 1.324-.428 2.869-1.33 4.536-2.685a29.57 29.57 0 0 0 1.951-1.743 49.963 49.963 0 0 1-4.062-5.046 49.994 49.994 0 0 1-6.402-.995Zm13.375 6.042a29.53 29.53 0 0 0 1.95 1.743c1.669 1.355 3.213 2.256 4.537 2.684 1.323.428 2.31.352 3.013-.054.704-.406 1.264-1.223 1.555-2.583.29-1.36.282-3.149-.057-5.27a29.557 29.557 0 0 0-.534-2.561 50.01 50.01 0 0 1-6.401.995 49.999 49.999 0 0 1-4.063 5.046Zm1.34-4.859A46.184 46.184 0 0 1 24 34.611a46.16 46.16 0 0 1-2.795-3.36 61.448 61.448 0 0 0 5.59 0Zm4.246-2.452c1.517-.19 2.96-.44 4.307-.741a46.208 46.208 0 0 0-1.511-4.1 61.514 61.514 0 0 1-2.796 4.841Zm3.995-7.293a50.003 50.003 0 0 1 2.339 6.04c.883-.25 1.713-.523 2.485-.817 2.007-.767 3.56-1.654 4.592-2.586 1.033-.932 1.46-1.825 1.46-2.637s-.427-1.705-1.46-2.638c-1.032-.932-2.585-1.819-4.593-2.585a29.552 29.552 0 0 0-2.484-.819 49.981 49.981 0 0 1-2.339 6.042Zm.883-8.563a49.974 49.974 0 0 0-6.401-.996A49.977 49.977 0 0 0 25.456 6.9a29.4 29.4 0 0 1 1.95-1.742c1.669-1.356 3.213-2.257 4.537-2.685 1.323-.428 2.31-.351 3.013.055.704.406 1.264 1.222 1.555 2.583.29 1.36.282 3.148-.057 5.27-.131.815-.31 1.671-.534 2.56Zm-.57 2.01a46.2 46.2 0 0 1-1.512 4.1 61.514 61.514 0 0 0-2.796-4.84c1.517.19 2.96.44 4.307.74Z" clip-rule="evenodd"/></g></symbol><use xlink:href="#ai:local:frameworks/react-icon"></use>  </svg> <span>React</span> </div> </li><li> <div class="flex flex-col items-center gap-2"> <svg width="1.15em" height="1em" viewBox="0 0 56 49" class="h-10 w-16" data-icon="frameworks/vue-icon">  <symbol id="ai:local:frameworks/vue-icon"><g fill="currentColor"><path d="M44.34.506h11.085l-27.712 48L0 .506h11.085l16.628 28.8L44.34.505Z"/><path fill-opacity=".45" d="m34.112.506-6.4 11.085-6.4-11.085H11.086l16.628 28.8L44.34.505H34.112Z"/></g></symbol><use xlink:href="#ai:local:frameworks/vue-icon"></use>  </svg> <span>Vue</span> </div> </li><li> <div class="flex flex-col items-center gap-2"> <svg width="0.92em" height="1em" viewBox="0 0 45 49" class="h-10 w-16" data-icon="frameworks/angular-icon">  <symbol id="ai:local:frameworks/angular-icon"><g fill="currentColor"><path d="M22.344 30.122h-5.928l-2.808 7.008H8.376L22.344 5.81v.024V.506L0 8.474l3.408 29.544 18.936 10.488V30.122Z"/><path d="M18.264 25.802h4.08v-9.816l-4.08 9.816Z"/><g opacity=".9"><path d="M22.344 30.122h5.928l2.808 7.008h5.232L22.344 5.81v.024V.506l22.344 7.968-3.408 29.544-18.936 10.488V30.122Z"/><path d="M26.424 25.802h-4.08v-9.816l4.08 9.816Z"/></g></g></symbol><use xlink:href="#ai:local:frameworks/angular-icon"></use>  </svg> <span>Angular</span> </div> </li><li> <div class="flex flex-col items-center gap-2"> <svg width="4.77em" height="1em" viewBox="0 0 81 17" class="h-10 w-16" data-icon="frameworks/nextjs-icon">  <symbol id="ai:local:frameworks/nextjs-icon"><g fill="currentColor"><path d="M53.295.448h13.934V3.02h-5.527v13.531h-2.764V3.021h-5.643V.447Zm-22.917 0V3.02h-11.17v4.138h8.983V9.73h-8.983v4.249h11.17v2.572H16.444V3.021h-.001V.447h13.934Zm6.957.007h-3.617l12.956 16.103H50.3l-6.478-8.046L50.291.467l-3.617.006-4.662 5.79L37.335.455Zm3.712 11.502-1.811-2.252-5.528 6.865h3.627l3.712-4.613Z"/><path fill-rule="evenodd" d="M16.54 16.55 3.569.442H.113v16.103h2.764V3.884L13.069 16.55h3.472Z" clip-rule="evenodd"/><path d="M67.85 16.452a.716.716 0 0 1-.518-.21.676.676 0 0 1-.214-.511.669.669 0 0 1 .214-.504.716.716 0 0 1 .519-.21c.194 0 .365.07.509.21a.683.683 0 0 1 .118.867.746.746 0 0 1-.627.358Zm4.718-6.783h1.225v4.719c-.002.433-.096.804-.28 1.116-.185.312-.441.55-.77.718a2.513 2.513 0 0 1-1.149.25c-.399 0-.756-.071-1.075-.211a1.73 1.73 0 0 1-.756-.628c-.188-.277-.28-.622-.28-1.035h1.227c.002.18.043.338.122.469.079.13.187.23.326.3.14.07.301.106.483.106.197 0 .365-.04.502-.124a.785.785 0 0 0 .314-.365c.072-.16.11-.36.11-.596V9.669Zm6.264 1.845a.89.89 0 0 0-.39-.668c-.23-.16-.527-.24-.893-.24-.256 0-.477.04-.66.115a.993.993 0 0 0-.424.312.762.762 0 0 0-.15.448c0 .14.034.262.1.364.065.103.153.19.267.26.112.072.238.131.375.179.138.048.277.088.415.122l.64.157c.256.059.505.138.743.24.237.1.453.226.642.38.19.153.339.337.45.553.11.216.166.469.166.76 0 .394-.101.739-.305 1.038-.204.297-.498.53-.884.697-.384.166-.849.251-1.395.251-.528 0-.99-.081-1.377-.243a2.035 2.035 0 0 1-.912-.707c-.219-.31-.337-.688-.354-1.133H76.1c.017.232.092.426.219.583.13.155.298.27.504.347.208.075.44.114.696.114.268 0 .504-.04.708-.12.202-.08.362-.19.476-.334a.781.781 0 0 0 .176-.502.646.646 0 0 0-.156-.435 1.194 1.194 0 0 0-.427-.288 4.384 4.384 0 0 0-.64-.209l-.775-.195c-.56-.142-1.004-.358-1.328-.648-.326-.29-.487-.673-.487-1.155 0-.395.109-.742.328-1.04a2.13 2.13 0 0 1 .891-.691 3.155 3.155 0 0 1 1.281-.247c.483 0 .906.08 1.272.247.365.164.652.393.86.684.207.292.316.626.322 1.004h-1.188Z"/></g></symbol><use xlink:href="#ai:local:frameworks/nextjs-icon"></use>  </svg> <span>Next.js</span> </div> </li><li> <div class="flex flex-col items-center gap-2"> <svg width="1em" height="1em" viewBox="0 0 49 49" class="h-10 w-16" data-icon="frameworks/python-icon">  <symbol id="ai:local:frameworks/python-icon"><g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M18.671.973a32.807 32.807 0 0 1 5.472-.467c1.958-.009 3.999.14 5.966.467 3.108.518 5.726 2.85 5.726 5.953V17.83c0 3.198-2.542 5.82-5.726 5.82H18.671c-3.883 0-7.154 3.333-7.154 7.113v5.232H7.58c-3.328 0-5.272-2.416-6.086-5.806-1.098-4.555-1.051-7.276 0-11.638.912-3.806 3.826-5.806 7.154-5.806h15.749V11.29H12.945V6.926c0-3.305.88-5.097 5.726-5.953ZM20.1 6.205c0-1.207-.966-2.189-2.149-2.189-1.187 0-2.148.982-2.148 2.19 0 1.202.961 2.175 2.148 2.175 1.183 0 2.15-.973 2.15-2.176Z"/><path d="M37.263 17.83v-5.085h4.297c3.333 0 4.904 2.493 5.726 5.806 1.145 4.601 1.195 8.05 0 11.638-1.157 3.484-2.398 5.806-5.726 5.806H24.397v1.454h11.438v4.365c0 3.304-2.843 4.984-5.726 5.819-4.337 1.258-7.813 1.066-11.438 0-3.027-.89-5.726-2.716-5.726-5.82V30.91c0-3.138 2.593-5.82 5.726-5.82H30.11c3.811 0 7.154-3.318 7.154-7.26Zm-4.285 24.704c0-1.202-.961-2.175-2.148-2.175-1.183 0-2.15.973-2.15 2.175 0 1.208.967 2.19 2.15 2.19 1.187 0 2.148-.982 2.148-2.19Z"/></g></symbol><use xlink:href="#ai:local:frameworks/python-icon"></use>  </svg> <span>Python</span> </div> </li><li> <div class="flex flex-col items-center gap-2"> <svg width="1.62em" height="1em" viewBox="0 0 81 50" class="h-10 w-16" data-icon="frameworks/node-icon">  <symbol id="ai:local:frameworks/node-icon"><g fill="currentColor"><path d="M40.127 49.011a1.58 1.58 0 0 1-.76-.2l-2.405-1.428c-.362-.2-.18-.272-.072-.308.488-.163.579-.199 1.085-.488.054-.037.127-.018.181.018l1.845 1.103c.072.037.163.037.217 0l7.217-4.179c.072-.036.108-.109.108-.199v-8.34c0-.09-.036-.163-.108-.2l-7.217-4.16c-.072-.037-.163-.037-.217 0l-7.217 4.16c-.072.037-.108.127-.108.2v8.34c0 .073.036.163.108.2l1.971 1.139c1.068.543 1.737-.09 1.737-.724v-8.231a.22.22 0 0 1 .217-.218h.922a.22.22 0 0 1 .217.218v8.231c0 1.43-.777 2.262-2.134 2.262-.416 0-.742 0-1.664-.453l-1.899-1.085a1.527 1.527 0 0 1-.76-1.32v-8.341a1.527 1.527 0 0 1 .76-1.321l7.217-4.18a1.613 1.613 0 0 1 1.52 0l7.216 4.18a1.527 1.527 0 0 1 .76 1.32v8.341a1.527 1.527 0 0 1-.76 1.321l-7.217 4.18a2.04 2.04 0 0 1-.76.162Z"/><path d="M42.37 43.277c-3.165 0-3.816-1.448-3.816-2.678a.22.22 0 0 1 .217-.217h.94c.109 0 .2.072.2.18.144.96.56 1.43 2.477 1.43 1.52 0 2.17-.344 2.17-1.158 0-.47-.18-.814-2.55-1.05-1.971-.198-3.2-.632-3.2-2.206 0-1.466 1.229-2.334 3.29-2.334 2.316 0 3.456.796 3.6 2.533a.293.293 0 0 1-.054.163c-.036.036-.09.072-.145.072h-.958a.212.212 0 0 1-.2-.163c-.216-.995-.777-1.32-2.26-1.32-1.664 0-1.863.578-1.863 1.012 0 .525.235.688 2.478.977 2.224.29 3.274.706 3.274 2.262 0 1.592-1.32 2.497-3.6 2.497Zm10.42-8.757c0 .76-.634 1.393-1.393 1.393a1.393 1.393 0 0 1 0-2.786c.741 0 1.392.615 1.392 1.393Zm-2.569 0a1.17 1.17 0 0 0 1.158 1.176c.65 0 1.175-.543 1.175-1.176 0-.651-.524-1.158-1.175-1.158-.615 0-1.158.507-1.158 1.158Zm.651-.778h.543c.18 0 .543 0 .543.416 0 .29-.181.344-.29.38.217.018.235.163.253.362.018.127.037.344.073.416h-.326c0-.072-.054-.47-.054-.488-.018-.09-.054-.127-.163-.127h-.271v.633h-.308v-1.592Zm.29.688h.235c.199 0 .235-.145.235-.217 0-.218-.145-.218-.235-.218h-.253v.435h.018Z"/><path fill-rule="evenodd" d="M17.754 16.391a.92.92 0 0 0-.47-.796l-7.652-4.432a1.112 1.112 0 0 0-.416-.127h-.072a.858.858 0 0 0-.416.127l-7.67 4.414a.928.928 0 0 0-.47.814l.02 11.869c0 .162.09.325.235.398.145.09.326.09.452 0l4.558-2.606a.92.92 0 0 0 .47-.795v-5.555a.92.92 0 0 1 .47-.796l1.936-1.122a.877.877 0 0 1 .47-.126c.163 0 .326.036.453.126l1.935 1.122a.922.922 0 0 1 .47.796v5.555a.92.92 0 0 0 .47.795l4.522 2.606a.442.442 0 0 0 .47 0 .449.449 0 0 0 .235-.398V16.39ZM54.615.054a.497.497 0 0 0-.452 0 .472.472 0 0 0-.235.398v11.76a.348.348 0 0 1-.163.29.346.346 0 0 1-.325 0l-1.917-1.104a.933.933 0 0 0-.923 0l-7.669 4.432a.923.923 0 0 0-.47.797v8.847a.92.92 0 0 0 .47.796l7.669 4.432a.93.93 0 0 0 .922 0l7.67-4.433a.92.92 0 0 0 .47-.795V3.419a.928.928 0 0 0-.47-.814L54.614.055Zm-.705 22.507c0 .09-.036.163-.108.199l-2.623 1.52a.27.27 0 0 1-.235 0l-2.623-1.52c-.072-.037-.108-.127-.108-.2v-3.039c0-.09.036-.163.108-.199l2.623-1.52a.268.268 0 0 1 .235 0l2.622 1.52c.073.037.109.127.109.2v3.039Zm26.226-3.112a.903.903 0 0 0 .453-.796V16.5a.942.942 0 0 0-.453-.796l-7.614-4.415a.933.933 0 0 0-.923 0l-7.669 4.433a.92.92 0 0 0-.47.796v8.847a.92.92 0 0 0 .47.796l7.615 4.342c.29.163.633.163.904 0l4.613-2.569a.45.45 0 0 0 .235-.398.45.45 0 0 0-.235-.398l-7.706-4.433a.472.472 0 0 1-.235-.398V19.54a.45.45 0 0 1 .236-.398l2.405-1.375a.442.442 0 0 1 .47 0l2.406 1.375a.47.47 0 0 1 .235.398v2.17c0 .163.09.326.235.399a.441.441 0 0 0 .47 0l4.558-2.66Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M71.943 19.033a.164.164 0 0 1 .18 0l1.466.85a.19.19 0 0 1 .09.163v1.7a.19.19 0 0 1-.09.164l-1.465.85a.164.164 0 0 1-.18 0l-1.466-.85a.19.19 0 0 1-.09-.163v-1.7a.19.19 0 0 1 .09-.164l1.465-.85Z" clip-rule="evenodd"/><path fill-opacity=".6" fill-rule="evenodd" d="m30.066 30.787-8.407-14.561.019-.035a.944.944 0 0 1 .329-.341l7.597-4.393a.93.93 0 0 1 .462-.123l8.401 14.552-.014.026a.944.944 0 0 1-.33.34l-7.596 4.412a.93.93 0 0 1-.462.123Z" clip-rule="evenodd"/><path fill-opacity=".8" fill-rule="evenodd" d="M21.66 25.892a.874.874 0 0 0 .347.36l7.597 4.412c.14.08.3.123.461.123L24.45 21.06l-2.79 4.832Zm16.81-9.663a.874.874 0 0 0-.346-.361l-7.597-4.412a.93.93 0 0 0-.462-.122l5.616 9.726 2.79-4.831Z" clip-rule="evenodd"/><path fill-opacity=".7" d="M21.555 16.649a.949.949 0 0 1 .104-.423l2.79 4.834-2.789 4.832a.908.908 0 0 1-.105-.438v-8.805Zm17.021 8.805a.949.949 0 0 1-.109.432l-2.786-4.826 2.79-4.831a.95.95 0 0 1 .105.438v8.787Z"/></g></symbol><use xlink:href="#ai:local:frameworks/node-icon"></use>  </svg> <span>Node</span> </div> </li><li> <div class="flex flex-col items-center gap-2"> <svg width="1.64em" height="1em" viewBox="0 0 80 49" class="h-10 w-16" data-icon="frameworks/aws-icon">  <symbol id="ai:local:frameworks/aws-icon"><g fill="currentColor"><path d="M22.462 18.032c0 .974.105 1.763.289 2.342.21.579.474 1.21.842 1.895.132.21.184.42.184.605 0 .263-.158.526-.5.79l-1.658 1.105c-.236.158-.473.237-.684.237-.263 0-.526-.132-.79-.369a8.14 8.14 0 0 1-.947-1.237 20.382 20.382 0 0 1-.815-1.552c-2.053 2.42-4.632 3.631-7.737 3.631-2.21 0-3.974-.631-5.263-1.895-1.29-1.263-1.948-2.947-1.948-5.052 0-2.237.79-4.053 2.395-5.421 1.605-1.369 3.737-2.053 6.447-2.053.895 0 1.816.08 2.79.21.974.132 1.974.343 3.026.58V9.927c0-2-.42-3.395-1.237-4.21-.842-.817-2.263-1.211-4.29-1.211-.92 0-1.868.105-2.841.342a21.03 21.03 0 0 0-2.842.894 7.55 7.55 0 0 1-.921.343 1.614 1.614 0 0 1-.421.078c-.369 0-.553-.263-.553-.815v-1.29c0-.42.052-.737.184-.92.132-.185.369-.37.737-.554.921-.473 2.026-.868 3.316-1.184 1.29-.342 2.658-.5 4.105-.5 3.132 0 5.421.71 6.895 2.132 1.447 1.42 2.184 3.579 2.184 6.474v8.526h.053Zm-10.685 4c.869 0 1.764-.158 2.71-.474.948-.316 1.79-.895 2.5-1.684.422-.5.738-1.053.896-1.684a9.448 9.448 0 0 0 .263-2.29v-1.105a21.968 21.968 0 0 0-2.421-.447 19.822 19.822 0 0 0-2.474-.158c-1.763 0-3.053.342-3.921 1.052-.868.71-1.29 1.71-1.29 3.027 0 1.237.316 2.158.974 2.79.632.657 1.553.973 2.763.973Zm21.132 2.842c-.474 0-.79-.079-1-.263-.21-.158-.395-.527-.553-1.027L25.172 3.242c-.158-.526-.237-.868-.237-1.052 0-.421.21-.658.632-.658h2.579c.5 0 .842.079 1.026.263.21.158.369.526.526 1.026l4.421 17.421 4.106-17.42c.131-.527.29-.87.5-1.027.21-.158.579-.263 1.052-.263h2.106c.5 0 .842.079 1.052.263.21.158.395.526.5 1.026l4.158 17.632L52.146 2.82c.158-.526.342-.868.526-1.026.21-.158.553-.263 1.026-.263h2.448c.42 0 .658.21.658.658 0 .131-.027.263-.053.42a3.74 3.74 0 0 1-.184.659L50.225 23.61c-.158.526-.342.868-.553 1.026-.21.158-.553.263-1 .263H46.41c-.5 0-.842-.079-1.053-.263-.21-.184-.394-.526-.5-1.053l-4.08-16.972-4.052 16.947c-.132.526-.29.869-.5 1.053-.21.184-.58.263-1.053.263H32.91Zm33.816.71c-1.369 0-2.737-.157-4.053-.473-1.316-.316-2.342-.658-3.026-1.053-.421-.237-.71-.5-.816-.737a1.857 1.857 0 0 1-.158-.737v-1.342c0-.552.21-.815.605-.815.158 0 .316.026.474.079.158.052.395.157.658.263.895.394 1.868.71 2.895.92 1.052.211 2.079.317 3.131.317 1.658 0 2.948-.29 3.842-.869.895-.579 1.369-1.42 1.369-2.5 0-.737-.237-1.342-.71-1.842-.474-.5-1.37-.947-2.659-1.368l-3.815-1.185c-1.922-.605-3.343-1.5-4.211-2.684-.868-1.158-1.316-2.447-1.316-3.816 0-1.105.237-2.079.71-2.92a6.765 6.765 0 0 1 1.895-2.159c.79-.605 1.685-1.052 2.737-1.368C65.33.979 66.435.848 67.593.848c.58 0 1.184.026 1.763.105.606.079 1.158.184 1.71.29.527.131 1.027.263 1.5.42.474.158.843.316 1.106.474.368.21.632.421.79.658.157.21.236.5.236.868V4.9c0 .553-.21.842-.605.842-.21 0-.553-.105-1-.315-1.5-.685-3.184-1.027-5.053-1.027-1.5 0-2.684.237-3.5.737-.815.5-1.236 1.263-1.236 2.342 0 .737.263 1.369.79 1.869.525.5 1.5 1 2.894 1.447l3.737 1.184c1.894.606 3.263 1.448 4.079 2.527.815 1.079 1.21 2.315 1.21 3.684 0 1.131-.237 2.158-.684 3.052a7.078 7.078 0 0 1-1.921 2.316c-.816.658-1.79 1.132-2.921 1.474a12.515 12.515 0 0 1-3.763.552Z"/><path fill-rule="evenodd" d="M71.698 38.373c-8.657 6.395-21.236 9.79-32.052 9.79-15.158 0-28.816-5.605-39.132-14.921-.816-.737-.079-1.737.895-1.158 11.158 6.474 24.921 10.395 39.158 10.395 9.605 0 20.158-2 29.868-6.105 1.448-.658 2.684.947 1.263 2Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M75.304 34.268c-1.106-1.42-7.316-.684-10.132-.342-.842.105-.974-.631-.21-1.184 4.947-3.474 13.078-2.474 14.026-1.316.947 1.184-.263 9.316-4.895 13.21-.71.606-1.395.29-1.079-.5 1.053-2.605 3.395-8.473 2.29-9.868Z" clip-rule="evenodd"/></g></symbol><use xlink:href="#ai:local:frameworks/aws-icon"></use>  </svg> <span>AWS</span> </div> </li><li> <div class="flex flex-col items-center gap-2"> <svg width="1.05em" height="1em" viewBox="0 0 49 47" class="h-10 w-16" data-icon="frameworks/azure-icon">  <symbol id="ai:local:frameworks/azure-icon"><g fill="currentColor"><path fill-opacity=".7" d="M34.856 2.43A2.26 2.26 0 0 0 32.713.892h-15.83a2.262 2.262 0 0 1 2.143 1.538l13.738 40.705a2.26 2.26 0 0 1-2.143 2.985h15.83a2.262 2.262 0 0 0 2.143-2.985L34.856 2.43Z"/><path fill-rule="evenodd" d="m21.028 30.194 3.684-10.916L19.026 2.43a2.261 2.261 0 0 0-2.13-1.538h-.181a2.264 2.264 0 0 0-2.146 1.54L.83 43.135a2.261 2.261 0 0 0 2.143 2.984h11.054a2.265 2.265 0 0 0 2.145-1.54l2.737-8.108-4.791-4.472a1.042 1.042 0 0 1 .712-1.805h6.197Z" clip-rule="evenodd"/><path fill-opacity=".6" fill-rule="evenodd" d="m28.397 30.194 4.367 12.94a2.26 2.26 0 0 1-2.09 2.985h-.53a2.275 2.275 0 0 1-1.552-.611L14.12 31.998a1.043 1.043 0 0 1 .712-1.804h13.566Z" clip-rule="evenodd"/></g></symbol><use xlink:href="#ai:local:frameworks/azure-icon"></use>  </svg> <span>Azure</span> </div> </li> </ul> </div>  </div>  </section> </div> <footer data-theme="light" id="footer" class="flex flex-col justify-between bg-default px-16 py-12 pt-20 text-default md:flex-row md:items-end"> <div class="mb-8 flex flex-col gap-10 md:mb-0"> <svg width="3.28em" height="1em" viewBox="0 0 1779 544" class="h-12 w-40" data-icon="wordmark">  <use xlink:href="#ai:local:wordmark"></use>  </svg> <div class="flex flex-col justify-items-end gap-4"> <div> <a class="text-md" href="mailto:hello@weareoverlap.io?subject=Let's talk!" target="_blank">hello@weareoverlap.io</a> </div> <span class="hidden text-sm md:block">&copy;2024 Overlap. All Rights Reserved.</span> </div> </div> <ul class="xs:flex-row flex justify-between *:text-sm md:flex-col md:gap-4 lg:flex-row lg:gap-8"> <li> <a href="https://www.linkedin.com/company/weareoverlap/" target="_blank" aria-label="Overlap on LinkedIn"> LinkedIn </a> </li><li> <a href="https://x.com/WeAreOverlap/" target="_blank" aria-label="Overlap on X"> X </a> </li><li> <a href="https://github.com/WeAreOverlap/" target="_blank" aria-label="Overlap on GitHub"> GitHub </a> </li><li> <a href="https://www.instagram.com/weareoverlap.io/" target="_blank" aria-label="Overlap on Instagram"> Instagram </a> </li> </ul> </footer> </body></html>
